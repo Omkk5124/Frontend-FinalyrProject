@@ -5,15 +5,13 @@ import {
     Text,
     View,
     Image,
-    TextInput,
-    Button,
     TouchableOpacity,
   } from "react-native";
 
 export default function profile(){
     return(
-      <View>
-         <Text style={styles.heading}>Doctor Information</Text>
+      <View style={styles.profileCont}>
+         <Text style={styles.heading}>Patient Information</Text>
         <Image source = {require('../assets/img.png')} style={styles.userImage}/>
         <Text style={styles.heading1}>Dr. ABC</Text>
         <Text style={styles.heading2}>Cardiologists</Text>
@@ -36,8 +34,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         color:"#0CAFFF",
         fontSize:30,
-        fontWeight: 'bold'
-    
+        fontWeight: 'bold',
     },
     loginText: {
         marginBottom: 5,
@@ -46,7 +43,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },  
     loginBtn: {
-        marginLeft:20,
         width: 200,
         borderRadius: 25,
         height: 50,
@@ -56,7 +52,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#0CAFFF",
     },
     loginBtn1: {
-        marginLeft:20,
         width: 200,
         borderRadius: 25,
         height: 50,
@@ -66,22 +61,15 @@ const styles = StyleSheet.create({
         backgroundColor: "#0CAFFF",
     },
     heading1:{
-      
-        // marginBottom:20,
         color:"#0CAFFF",
         fontSize:30,
         fontWeight: 'bold',
-        marginLeft:60,
         marginTop:10,
     
     },
     heading2:{
-      
-        // marginBottom:20,
         color:"#0CAFFF",
         fontSize:20,
-        // fontWeight: 'bold',
-        marginLeft:60,
         marginTop:10,
     
     },
@@ -91,6 +79,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         width: 120,
         marginTop:2,
-        marginLeft:60
       },
+      profileCont:{
+        marginTop:"20%",
+        display:"flex",
+        alignItems:"center",
+        justifyContent:"center",
+
+      }
 })

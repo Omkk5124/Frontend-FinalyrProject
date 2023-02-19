@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 
-export default function registerp() {
+export default function registerp({navigation}) {
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -21,10 +21,9 @@ export default function registerp() {
 
         <SafeAreaView SafeAreaView style={styles.container}>
         <ScrollView>
-        <View>
+        <View style={styles.registerp}>
 
             <StatusBar style="auto" />
-            <Text style={styles.heading}>Patient Registration</Text>
 
             <View style={styles.inputView}>
                 <TextInput
@@ -110,10 +109,8 @@ export default function registerp() {
                 />
             </View>
            
-
-
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText}>Register</Text>
+                <Text style={styles.loginText} onPress={()=>navigation.navigate("Login")}>Register</Text>
             </TouchableOpacity>
         </View>
 </ScrollView>
@@ -125,19 +122,22 @@ export default function registerp() {
 
 
 const styles = StyleSheet.create({
+    registerp:{
+        width:"100%",
+        height:"100%",
+        display:"flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
   
     container: {
-        marginTop: 30,
-        flex: 1,
-        backgroundColor: 'white',
+        width:"100%",
+        height:"100%",
+        display:"flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '3%',
       },
-    heading: {
-        marginBottom: 20,
-        color: "#0CAFFF",
-        fontSize: 30,
-        fontWeight: 'bold'
-
-    },
     inputView: {
 
         borderRadius: 20,
@@ -152,15 +152,9 @@ const styles = StyleSheet.create({
         height: 50,
         flex: 1,
         padding: 10,
-        marginLeft: 0,
-    },
-    forgot_button: {
-        height: 30,
-        marginBottom: 30,
     },
     loginBtn: {
-        marginLeft:20,
-        width: 200,
+        width: "50%",
         borderRadius: 25,
         height: 50,
         alignItems: "center",
@@ -169,7 +163,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#0CAFFF",
     },
     loginText: {
-        marginBottom: 5,
         color: "black",
         fontSize: 20,
         fontWeight: 'bold'

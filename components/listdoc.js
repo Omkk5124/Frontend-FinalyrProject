@@ -1,12 +1,15 @@
 import { FlatList, Text, View,StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import React from 'react';
 const data = [
-    { d: "Doctor Name", p: 'Speciality'},
     {d: 'Mr. ABC', p: 'Cardiologists'},
     { d: 'Mr. XYZ', p: 'Dermatologists'},
     {d: 'Mr. PQR', p: 'Hematologists'}
 ];
-const listdoc = () => {
+
+const listdoc = ({navigation}) => {
     const item = ({ item }) => (
         
         <View style={{ flexDirection: 'row' }}>
@@ -20,8 +23,17 @@ const listdoc = () => {
         </View>
     );
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '40%'}}>
-        <Text style={styles.heading}>List of Doctors with Specialities</Text>
+        <View style={styles.listdocCont}>
+        <Text style={styles.heading}>List of Doctors</Text>
+
+            <View style={{ flexDirection: 'row' }}> 
+                <View style={{ width: "50%", backgroundColor: '#000000'}}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold' , textAlign: 'center',padding:25,color:'#ffffff'}}>Doctor</Text>
+                </View>
+                <View style={{ width: "50%", backgroundColor: '#000000'}}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold' , textAlign: 'center',padding:25,color:'#ffffff'}}>Specialities</Text>
+                </View>
+            </View>
             <FlatList data={data} renderItem={item}  />
         </View>
     );
@@ -34,8 +46,15 @@ const styles = StyleSheet.create({
     heading:{
         marginBottom:20,
         color:"#0CAFFF",
-        fontSize:20,
-        fontWeight: 'bold'
-    
+        fontSize:30,
+        fontWeight: 'bold' 
     },
+    listdocCont:{
+        width:"100%",
+        height:"100%",
+        display:"flex",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '3%',
+    }
 })

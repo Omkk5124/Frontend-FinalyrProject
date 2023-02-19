@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import {
     StyleSheet,
     Text,
@@ -10,7 +13,7 @@ import {
     TouchableOpacity,
   } from "react-native";
 
-export default function login(){
+export default function login({navigation}){
 
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,7 +45,12 @@ export default function login(){
         <Text style={styles.forgot_button}>Forgot Password?</Text> 
       </TouchableOpacity> 
       <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>LOGIN</Text> 
+        <Text style={styles.loginText}
+          onPress={() => navigation.replace('Prediction')}
+        >LOGIN</Text> 
+      </TouchableOpacity> 
+      <TouchableOpacity>
+       <Text style={styles.registerBtn} onPress={()=>navigation.navigate("Registerp")}>Register</Text> 
       </TouchableOpacity> 
     </View>
 
@@ -99,5 +107,11 @@ const styles = StyleSheet.create({
         color:"black",
         fontSize:20,
         fontWeight: 'bold'
+    },
+    registerBtn:{
+      height: 30,
+      marginTop: 10,
+      color:"blue",
+
     }
   });

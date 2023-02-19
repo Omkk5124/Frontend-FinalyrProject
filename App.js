@@ -7,23 +7,13 @@ import Registerp from './components/registerp';
 import Prediction from './components/prediction';
 import Listdoc from './components/listdoc';
 import Profile from './components/profile';
+import PatientNav from './routes/PatientNav';
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      
-      
-      <StatusBar style="auto" />
-      {/* <Login/> */}
-      {/* <Registerp/> */}
-      
-      {/* <Prediction/> */}
-      {/* <Listdoc/> */}
-      
-     <Profile/>
-     
-    </View>
+     <PatientNav/>
+    // <Registerp/>
   );
 }
 
