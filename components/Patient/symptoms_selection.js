@@ -1,0 +1,126 @@
+import React, { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import {StyleSheet,Text,View,Image,TextInput,Button,FlatList,Pressable,TouchableOpacity } from "react-native";
+import { symptoms } from "../../assets/symptoms";
+import Constants from 'expo-constants';
+import { Card,Searchbar  } from 'react-native-paper';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+
+export default function Symptoms_selection({navigation}){
+    
+    const [searchQuery, setSearchQuery] = React.useState('');
+    const onChangeSearch = query => setSearchQuery(query);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        setData(symptoms);
+    }, []);
+
+
+    const handleChange = (id) => {
+        let temp = data.map((data_element) => {
+            if (id === data_element.id) {
+                return { ...data_element, isChecked: !data_element.isChecked };
+            }
+            return data_element;
+        });
+        setData(temp);
+    };
+
+    let selected = data.filter((data_element) => data_element.isChecked);
+
+    const renderFlatList = (renderData) => {
+        return (
+
+            <FlatList
+                data={renderData}
+                renderItem={({ item }) => (
+                    <Card style={{ margin: 5 }}>
+                        <View style={styles.card}>
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    flex: 1,
+                                    justifyContent: 'flex-start',
+                                }}>
+                                <Pressable onPress={() => handleChange(item.id)} >
+                                    <MaterialCommunityIcons
+                                        name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={24} color="#000" />
+                                </Pressable>
+                                <Text style={{marginLeft:5}}>{item.txt}</Text>
+                            </View>
+                        </View>
+                    </Card>
+                )}
+            />
+        );
+        
+    }
+
+    return (
+        <View style={styles.container}>
+            <View style={{ flex: 1 }}>
+                <Searchbar
+                placeholder="Search"
+                onChangeText={onChangeSearch}
+                value={searchQuery}
+                />        
+            </View>
+            <View style={{ flex: 5 }}>
+                {renderFlatList(data)}
+            </View>
+            <Text style={styles.text}>Selected </Text>
+            <View style={{ flex: 2 }}>
+                {renderFlatList(selected)}
+            </View>
+            <StatusBar />
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Prediction")}>
+                    <Text style={styles.loginText}>Predict</Text>
+            </TouchableOpacity>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingTop: Constants.statusBarHeight,
+        width:390
+    },
+    card: {
+        padding: 15,
+        margin: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    modalView: {
+        margin: 1,
+        backgroundColor: 'white',
+        borderRadius: 20,
+        padding: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        elevation: 5,
+    },
+    text: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
+    loginText: {
+        marginBottom: 5,
+        color: "#fff",
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    loginBtn: {
+        width: 200,
+        borderRadius:20,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#172E68",
+    },
+});
+
+

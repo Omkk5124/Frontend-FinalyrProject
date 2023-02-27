@@ -46,7 +46,7 @@ export default function login({navigation}){
       </TouchableOpacity> 
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.loginText}
-          onPress={() => navigation.replace('Prediction')}
+          onPress={() => navigation.replace('PHome')}
         >LOGIN</Text> 
       </TouchableOpacity> 
       <TouchableOpacity>
