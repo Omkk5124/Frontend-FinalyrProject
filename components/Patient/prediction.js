@@ -53,12 +53,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     loginBtn: {
-        width: 200,
+        width: "50%",
+        marginBottom:"2%",
         borderRadius:20,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#172E68",
-        bottom:'2%',
     },
 })

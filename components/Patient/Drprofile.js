@@ -10,40 +10,35 @@ import {
     TouchableOpacity,
 } from "react-native";
 
-export default function profile() {
+export default function profile({ route, navigation }) {
+    const {key} = route.params;
     return (
-        <View>
-            <View style={{ flex: 2, marginTop: 40 }}>
-        <Image
-          style={styles.tinyLogo}
-          source={require('../../assets/logo.png')} />
-      </View>
-            <View style={styles.container}>
-                
-                <Image source={require('../assets/img.png')} style={styles.userImage} />
-                <Text style={styles.heading1}>Dr. ABC</Text>
-                <Text style={styles.heading2}>Cardiologists</Text>
-                <TouchableOpacity style={styles.loginBtn}>
-                    <Text style={styles.loginText}>Schedule</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn1}>
-                    <Text style={styles.loginText}>Chat</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn1}>
-                    <Text style={styles.loginText}>Call</Text>
-                </TouchableOpacity>
-            </View>
+        <View style={styles.container}>
+            <Text>{key}</Text>
+            <Image source={require('../../assets/img.png')} style={styles.userImage} />
+            <Text style={styles.heading1}>Dr. ABC</Text>
+            <Text style={styles.heading2}>Cardiologists</Text>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>Schedule</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn1}>
+                <Text style={styles.loginText}>Chat</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn1}>
+                <Text style={styles.loginText}>Call</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        width:290,
+        width: "100%",
+        width: "100%",
         flex: 9,
         alignItems: "center",
         justifyContent: "center",
-      },
+    },
 
     tinyLogo: {
         height: 41,
@@ -51,7 +46,7 @@ const styles = StyleSheet.create({
         width: 140,
         marginTop: 0,
         marginLeft: 0
-      },
+    },
     loginText: {
         marginBottom: 5,
         color: "#fff",
@@ -82,7 +77,7 @@ const styles = StyleSheet.create({
         // marginBottom:20,
         color: "#172E68",
         fontSize: 30,
-        fontWeight: 'bold',  
+        fontWeight: 'bold',
         marginTop: 10,
     },
     heading2: {
@@ -90,7 +85,7 @@ const styles = StyleSheet.create({
         color: "#172E68",
         fontSize: 20,
         // fontWeight: 'bold',
-    
+
         marginTop: 10,
 
     },

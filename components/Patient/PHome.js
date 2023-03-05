@@ -27,8 +27,7 @@ export default function Home({navigation}) {
             <View style={styles.container}>
                 <TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,
@@ -44,7 +43,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={117}
                                 color='#fff'
-                                onPress={() => navigation.navigate('ListDoc')} />
+                                onPress={() => {navigation.navigate('ListDoc')}} />
                         </View>
                         <View>
                             <Text style={styles.TextStyle}> Doctor List</Text>
@@ -53,8 +52,7 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,
@@ -69,7 +67,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={110}
                                 color='#fff'
-                                onPress={() => navigation.navigate('Profilep')} />
+                                onPress={() =>navigation.navigate('Profilep')} />
                         </View>
                         <View>
 
@@ -82,8 +80,7 @@ export default function Home({navigation}) {
             <View style={styles.container}>
                 <TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,
@@ -99,7 +96,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={110}
                                 color='#555'
-                                onPress={() => navigation.navigate('Symptoms')} />
+                                onPress={() => {navigation.navigate('Symptoms')}} />
                         </View>
                         <View>
 
@@ -109,8 +106,7 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,
@@ -126,7 +122,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={97}
                                 color='#666'
-                                onPress={() => navigation.navigate('UploadDocp')} />
+                                onPress={() => {navigation.navigate('UploadDocp')}} />
                         </View>
                         <View>
 
@@ -138,8 +134,7 @@ export default function Home({navigation}) {
             <View style={styles.container}>
                 <TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,
@@ -155,7 +150,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={110}
                                 color='#fff'
-                                onPress={() => navigation.navigate('Help')} />
+                                onPress={() => {navigation.navigate('Help')}} />
                         </View>
                         <View>
 
@@ -164,8 +159,7 @@ export default function Home({navigation}) {
                     </View>
                 </TouchableOpacity><TouchableOpacity
                     style={styles.SubmitButtonStyle}
-                    activeOpacity={.5}
-                    onPress={{}}>
+                    activeOpacity={.5}>
                     <View style={{ flex: 1 }}>
                         <View style={{
                             flex: 9,

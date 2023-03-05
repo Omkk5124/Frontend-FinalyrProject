@@ -84,11 +84,10 @@ export default function Symptoms_selection({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        // alignItems:'center',
-        // paddingTop: Constants.statusBarHeight,
         width:'100%',
-        height:'100%'
+        height:'100%',
+        display:'flex',
+        justifyContent: 'center',
     },
     card: {
         padding: 15,
@@ -116,12 +115,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     loginBtn: {
-        width: 200,
+        width: "50%",
         borderRadius:20,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#172E68",
+        alignSelf:'center',
+        marginBottom:"2%"
+
     },
 });
 

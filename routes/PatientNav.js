@@ -8,6 +8,7 @@ import Registerp from "../components/Patient/registerp";
 import Symptoms from "../components/Patient/symptoms_selection"
 import PHome from "../components/Patient/PHome"
 import Patient_profile from "../components/Patient/Patient_profile"
+import Doctor_profile from "../components/Patient/Drprofile"
 import 'react-native-gesture-handler';
 import {
   View,
@@ -82,6 +83,10 @@ const PatientStack = () => {
             title: 'List of doctors',
           }} />
           <Stack.Screen name="Profilep" component={Patient_profile}
+          options={{
+            title: 'Profile',
+          }} />
+          <Stack.Screen name="ProfileDr" component={Doctor_profile}
           options={{
             title: 'Profile',
           }} />
