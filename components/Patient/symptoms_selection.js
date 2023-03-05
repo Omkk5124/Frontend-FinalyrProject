@@ -59,7 +59,7 @@ export default function Symptoms_selection({navigation}){
 
     return (
         <View style={styles.container}>
-            <View style={{ flex: 1 }}>
+            <View style={{marginBottom:'2%'}}>
                 <Searchbar
                 placeholder="Search"
                 onChangeText={onChangeSearch}
@@ -85,8 +85,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
-        width:390
+        // alignItems:'center',
+        // paddingTop: Constants.statusBarHeight,
+        width:'100%',
+        height:'100%'
     },
     card: {
         padding: 15,

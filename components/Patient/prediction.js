@@ -1,59 +1,50 @@
-import { FlatList, Text, View, StyleSheet, TouchableOpacity,Image } from 'react-native';
+import { FlatList, Text, View, StyleSheet, Image,Pressable,TouchableOpacity } from 'react-native';
 import React from 'react';
 const data = [
-    { d: 'Diabetes', p: '20%' },
-    { d: 'Flu', p: '10%' },
-    { d: 'Malaria', p: '10%' },
-    { d: "Cold", p: "10%" }
+    { d: 'Flu', p: '20%' },
+    { d: 'Cancer', p: '10%' },
+    { d: 'Fever', p: '50%' }
 ];
-
-const prediction = ({navigation}) => {
+const Prediction = ({ navigation }) => {
     const item = ({ item }) => (
-
         <View style={{ flexDirection: 'row' }}>
-
-            <View style={{ width: 150, backgroundColor:'#F0F8FF' }}>
+            <View style={{ width: '50%', backgroundColor: '#F0F8FF' }}>
                 <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center', padding: 25 }}>{item.d}</Text>
             </View>
-            <View style={{ width: 150, backgroundColor: '#F0F8FF' }}>
+            <View style={{ width: '50%', backgroundColor: '#F0F8FF' }}>
                 <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center', padding: 25 }}>{item.p}</Text>
             </View>
         </View>
     );
+
     return (
-        <View style={{margin:0}}>
-            <View style={styles.container}>
-                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: '30%' }}>
-                    <FlatList data={data} renderItem={item} />
-                    <TouchableOpacity style={styles.loginBtn}
-                    onPress={()=>navigation.navigate("ListDoc")}
-                    >
-                        <Text style={styles.loginText}>Find Doctor</Text>
-                    </TouchableOpacity>
+        <View style={styles.container}>
+            <View style={{ flexDirection: 'row' }}>
+                <View style={{ width: '50%', backgroundColor: '#000000' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center', padding: 25,color:'#FFFFFF' }}>Diseases</Text>
+                </View>
+                <View style={{ width: '50%', backgroundColor: '#000000' }}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'center', padding: 25 ,color:'#FFFFFF'}}>Probability</Text>
                 </View>
             </View>
+            <FlatList data={data} renderItem={item} />
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("ListDoc")}>
+                    <Text style={styles.loginText}>Find Doctor</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-export default prediction;
+export default Prediction;
 
 
 const styles = StyleSheet.create({
     container: {
-        flex: 9,
-    },
-    tinyLogo: {
-        height: 41,
-        marginBottom: 0,
-        width: 140,
-        marginTop: 0,
-        marginLeft:20
-    },
-    heading: {
-        marginBottom: 20,
-        color: "#172E68",
-        fontSize: 22,
-        fontWeight: 'bold'
+        display: 'flex',
+        direction:'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height:'100%',
+        width:'100%',
     },
     loginText: {
         marginBottom: 5,
@@ -68,5 +59,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#172E68",
+        bottom:'2%',
     },
 })
