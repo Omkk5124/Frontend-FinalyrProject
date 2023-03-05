@@ -18,8 +18,8 @@ import {
 
 export default function Home({navigation}) {
     return (
-        <View style={{ flex: 1 }}>
-            <View style={{ flex: 1, marginTop: 40 }}>
+        <View style={{ flex: 1 ,margin:"1%"}}>
+            <View>
                 <Image
                     style={styles.tinyLogo}
                     source={require('../../assets/logo.png')} />
@@ -41,8 +41,6 @@ export default function Home({navigation}) {
                                 type="FontAwesome"
                                 style={{
                                     backgroundColor: '#42c1fc',
-                                    marginRight: -11,
-
                                 }}
                                 size={117}
                                 color='#fff'
@@ -63,13 +61,11 @@ export default function Home({navigation}) {
                             justifyContent: "center",
                             alignItems: "center",
                         }}>
-
                             <Entypo.Button
                                 name="user"
                                 type="Entypo"
                                 style={{
                                     backgroundColor: '#faa',
-                                    marginRight: -11,
                                 }}
                                 size={110}
                                 color='#fff'
@@ -100,7 +96,6 @@ export default function Home({navigation}) {
                                 type="FontAwesome"
                                 style={{
                                     backgroundColor: '#fff',
-                                    marginRight: -11
                                 }}
                                 size={110}
                                 color='#555'
@@ -128,7 +123,6 @@ export default function Home({navigation}) {
                                 type="FontAwesome5"
                                 style={{
                                     backgroundColor: '#fff',
-                                    marginRight: -11
                                 }}
                                 size={97}
                                 color='#666'
@@ -158,7 +152,6 @@ export default function Home({navigation}) {
                                 type="FontAwesome"
                                 style={{
                                     backgroundColor: '#42c1fc',
-                                    marginRight: -11
                                 }}
                                 size={110}
                                 color='#fff'
@@ -185,14 +178,14 @@ export default function Home({navigation}) {
                                 type="ionicon"
                                 style={{
                                     backgroundColor: '#f55',
-                                    marginRight: -11
                                 }}
                                 size={110}
                                 color='#fff'
-                                onPress={() => navigation.navigate('Logout')} />
+                                onPress={() => {
+                                    navigation.navigate('Login')
+                                    }} />
                         </View>
                         <View>
-
                             <Text style={styles.TextStyle}> log out</Text>
                         </View>
                     </View>
@@ -226,7 +219,6 @@ const styles = StyleSheet.create({
         marginLeft: 0
     },
     SubmitButtonStyle: {
-
         marginTop: 10,
         paddingTop: 15,
         paddingBottom: 15,

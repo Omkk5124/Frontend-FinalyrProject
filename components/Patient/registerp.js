@@ -21,15 +21,7 @@ export default function registerp() {
     const [lname, setLname] = useState("");
     return (
         <View>
-            <View style={{ flex: 1, marginTop: 40 }}>
-                <Image
-                    style={styles.tinyLogo}
-                    source={require('../../assets/logo.png')} />
-
-            </View>
             <SafeAreaView SafeAreaView style={styles.container}>
-
-                {/* <ScrollView> */}
                     <View style={{ margin: 10,marginTop:70, borderWidth: 0, borderRadius: 15, borderColor: '#172E68',padding:10 }}>
 
                         <StatusBar style="auto" />
@@ -64,7 +56,6 @@ export default function registerp() {
                             />
                         </View>
                         
-
 
                         <View style={styles.inputView}>
 
@@ -119,7 +110,6 @@ export default function registerp() {
                             <Text style={styles.loginText}>Register</Text>
                         </TouchableOpacity>
                     </View>
-                {/* </ScrollView> */}
             </SafeAreaView>
         </View>
     );
