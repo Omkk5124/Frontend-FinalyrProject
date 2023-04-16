@@ -122,7 +122,7 @@ export default function Home({navigation}) {
                                 }}
                                 size={97}
                                 color='#666'
-                                onPress={() => {navigation.navigate('UploadDocp')}} />
+                                onPress={() => {navigation.navigate('UploadDoc')}} />
                         </View>
                         <View>
 
@@ -150,10 +150,10 @@ export default function Home({navigation}) {
                                 }}
                                 size={110}
                                 color='#fff'
-                                onPress={() => {navigation.navigate('Help')}} />
+                                onPress={() => {navigation.navigate('HelpPage')}} />
                         </View>
                         <View>
-
+ 
                             <Text style={styles.TextStyle}>Help</Text>
                         </View>
                     </View>
