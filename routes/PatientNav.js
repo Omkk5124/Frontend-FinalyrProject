@@ -9,6 +9,8 @@ import Symptoms from "../components/Patient/symptoms_selection"
 import PHome from "../components/Patient/PHome"
 import Patient_profile from "../components/Patient/Patient_profile"
 import Doctor_profile from "../components/Patient/Drprofile"
+import Help from '../components/Helppage/Help';
+import UploadP from '../components/uploadP';
 import 'react-native-gesture-handler';
 import {
   View,
@@ -89,6 +91,14 @@ const PatientStack = () => {
           <Stack.Screen name="ProfileDr" component={Doctor_profile}
           options={{
             title: 'Profile',
+          }} />
+          <Stack.Screen name="HelpPage" component={Help}
+          options={{
+            title: 'Help',
+          }} />
+           <Stack.Screen name="UploadDoc" component={UploadP}
+          options={{
+            title: 'Upload Documnets',
           }} />
       </Stack.Navigator>
     </NavigationContainer>
