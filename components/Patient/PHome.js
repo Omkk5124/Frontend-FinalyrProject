@@ -186,9 +186,6 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
             </View>
         </View>
-
-
-
     );
 }
 

@@ -11,10 +11,8 @@ import {
 } from "react-native";
 
 export default function patient_profile({navigation}) {
-   
 
     return (
-
         <View style={styles.container}>
             <Image source={require('../../assets/img.png')} style={styles.userImage} />
             <Text style={styles.heading1}>Mr. Jayant</Text>

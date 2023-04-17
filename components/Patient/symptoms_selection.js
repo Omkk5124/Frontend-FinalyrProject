@@ -116,14 +116,13 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: "50%",
+        marginBottom:"2%",
         borderRadius:20,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#172E68",
         alignSelf:'center',
-        marginBottom:"2%"
-
     },
 });
 

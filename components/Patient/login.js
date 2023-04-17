@@ -11,12 +11,47 @@ import {
     TextInput,
     Button,
     TouchableOpacity,
+    Alert
   } from "react-native";
-
-export default function login({navigation}){
-
-    const [email, setEmail] = useState("");
+  
+  export default function login({navigation}){
+    
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  
+  const handleLogin = () => {
+    fetch('http://127.0.0.1:8000/login_request', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email_id: email,
+        password: password,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Invalid credentials');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Handle successful login
+        if(data == "Invalid"){
+          setIsVisible(true);
+          return
+        }
+        else if(data == "Invalid credentials"){
+          setIsVisible(true);
+          return
+        }
+        navigation.replace("PHome")
+      })
+      .catch(error => setError(error.message));
+  };
+
     return(
 
         <View style={styles.container}>
@@ -41,12 +76,13 @@ export default function login({navigation}){
           onChangeText={(password) => setPassword(password)}
         /> 
       </View> 
+      {isVisible && <Text style={{color:"red"}}>Invalid credential</Text>}
       <TouchableOpacity>
         <Text style={styles.forgot_button}>Forgot Password?</Text> 
       </TouchableOpacity> 
       <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.loginText}
-          onPress={() => navigation.replace('PHome')}
+          onPress={handleLogin}
         >LOGIN</Text> 
       </TouchableOpacity> 
       <TouchableOpacity>
