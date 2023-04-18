@@ -158,8 +158,6 @@ export const symptoms = [
 
 
 
-
-  { id: 280, txt: "Itching", isChecked: false },
   { id: 281, txt: "Skin Rash", isChecked: false },
   { id: 282, txt: "Nodal Skin Eruptions", isChecked: false },
   { id: 283, txt: "Continuous Sneezing", isChecked: false },
