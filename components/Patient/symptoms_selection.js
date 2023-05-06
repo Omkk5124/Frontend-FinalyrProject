@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {StyleSheet,Text,View,Image,TextInput,Button,FlatList,Pressable,TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, Button, FlatList, Pressable, TouchableOpacity } from "react-native";
 import { symptoms } from "../../assets/symptoms";
 import Constants from 'expo-constants';
-import { Card,Searchbar  } from 'react-native-paper';
+import { Card, Searchbar } from 'react-native-paper';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 
-export default function Symptoms_selection({navigation}){
-    
+export default function Symptoms_selection({ navigation }) {
+
     const [searchQuery, setSearchQuery] = React.useState('');
+    const [Disease, setDisease] = useState('');
     const onChangeSearch = query => setSearchQuery(query);
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -47,24 +48,55 @@ export default function Symptoms_selection({navigation}){
                                     <MaterialCommunityIcons
                                         name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={24} color="#000" />
                                 </Pressable>
-                                <Text style={{marginLeft:5}}>{item.txt}</Text>
+                                <Text style={{ marginLeft: 5 }}>{item.txt}</Text>
                             </View>
                         </View>
                     </Card>
                 )}
             />
         );
-        
+
+    }
+
+    const handlePredict = () => {
+        let list = ""
+        for (let i = 0; i < selected.length; i++) {
+            list += selected[i].txt + ",";
+        }
+        list = list.substring(0, list.length - 1)
+        fetch('http://127.0.0.1:8000/predict/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                symptoms: list
+            }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Invalid');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Handle successful login
+                console.log("Disease : ", data)
+                setDisease(data)
+                navigation.navigate('Prediction',{
+                    disease:data,
+                });
+            })
     }
 
     return (
         <View style={styles.container}>
-            <View style={{marginBottom:'2%'}}>
+            <View style={{ marginBottom: '2%' }}>
                 <Searchbar
-                placeholder="Search"
-                onChangeText={onChangeSearch}
-                value={searchQuery}
-                />        
+                    placeholder="Search"
+                    onChangeText={onChangeSearch}
+                    value={searchQuery}
+                />
             </View>
             <View style={{ flex: 5 }}>
                 {renderFlatList(data)}
@@ -74,8 +106,8 @@ export default function Symptoms_selection({navigation}){
                 {renderFlatList(selected)}
             </View>
             <StatusBar />
-            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Prediction")}>
-                    <Text style={styles.loginText}>Predict</Text>
+            <TouchableOpacity style={styles.loginBtn} onPress={handlePredict}>
+                <Text style={styles.loginText}>Predict</Text>
             </TouchableOpacity>
         </View>
     );
@@ -84,9 +116,9 @@ export default function Symptoms_selection({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width:'100%',
-        height:'100%',
-        display:'flex',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
         justifyContent: 'center',
     },
     card: {
@@ -116,13 +148,13 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: "50%",
-        marginBottom:"2%",
-        borderRadius:20,
+        marginBottom: "2%",
+        borderRadius: 20,
         height: 50,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#172E68",
-        alignSelf:'center',
+        alignSelf: 'center',
     },
 });
 
