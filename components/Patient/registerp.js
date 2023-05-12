@@ -17,43 +17,57 @@ export default function registerp() {
 
     const [email, setEmail] = useState("");
     const [fname, setFname] = useState("");
-    const [mname, setMname] = useState("");
     const [lname, setLname] = useState("");
     const [age, setAge] = useState("");
     const [address, setAddress] = useState("");
     const [number, setNumber] = useState("");
-    const [adhar, setAdhar] = useState("");
     const [password, setPassword] = useState("");
+    const [blood_grp, setBlood_grp] = useState("");
+    const [weight, setWeight] = useState("");
 
     const HandleRegister = () => {
         const data = {
-            email,
-            fname,
-            mname,
-            lname,
-            age,
-            address,
-            number,
-            adhar,
-            password
+            email_id: email,
+            name: fname,
+            lname: lname,
+            age: age,
+            weight: weight,
+            address: address,
+            mob_no: number,
+            password: password,
+            blood_grp: blood_grp
         }
         console.log(data)
-        // fetch('https://examples.com/data.json', {
-        // method: 'POST',
-        // headers: {
-        //     Accept: 'application/json',
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify({
-        //     firstParam: 'yourValue'
-        // })
-        // });
+        fetch('http://127.0.0.1:8000/register_request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                data
+            }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Invalid credentials');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data == "User already exist") {
+                    //   setIsVisible(true);
+                    console.log("user already exist")
+                    return
+                }
+                navigation.replace("Login")
+            })
+            .catch(error => setError(error.message));
     }
 
     return (
         <SafeAreaView SafeAreaView style={styles.container}>
-                <ScrollView>
-            <View style={{ margin: 10, marginTop: 70, borderWidth: 0, borderRadius: 15, borderColor: '#172E68', padding: 10 }}>
+            <ScrollView>
+                <View style={{ margin: 10, marginTop: 70, borderWidth: 0, borderRadius: 15, borderColor: '#172E68', padding: 10 }}>
 
                     <View style={styles.inputView}>
                         <TextInput
@@ -64,14 +78,6 @@ export default function registerp() {
                         />
                     </View>
 
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="Middle Name"
-                            placeholderTextColor="black"
-                            onChangeText={(Mname) => setMname(Mname)}
-                        />
-                    </View>
                     <View style={styles.inputView}>
                         <TextInput
                             style={styles.TextInput}
@@ -119,9 +125,17 @@ export default function registerp() {
                     <View style={styles.inputView}>
                         <TextInput
                             style={styles.TextInput}
-                            placeholder="Aadhar No."
+                            placeholder="Weight"
+                            placeholderTextColor="black" s
+                            onChangeText={(weight) => setWeight(weight)}
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <TextInput
+                            style={styles.TextInput}
+                            placeholder="Blood Group"
                             placeholderTextColor="black"
-                            onChangeText={(adhar) => setAdhar(adhar)}
+                            onChangeText={(BloodGrp) => setBlood_grp(BloodGrp)}
                         />
                     </View>
                     <View style={styles.inputView}>
@@ -134,11 +148,11 @@ export default function registerp() {
                         />
                     </View>
 
-                <TouchableOpacity style={styles.loginBtn} onPress={HandleRegister}>
-                    <Text style={styles.loginText}>Register</Text>
-                </TouchableOpacity>
-            </View>
-                </ScrollView>
+                    <TouchableOpacity style={styles.loginBtn} onPress={HandleRegister}>
+                        <Text style={styles.loginText}>Register</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
