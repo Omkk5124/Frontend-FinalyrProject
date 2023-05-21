@@ -13,7 +13,9 @@ import {
 } from "react-native";
 
 
-export default function registerp() {
+export default function registerp({navigation}) {
+    const [isVisible1, setIsVisible1] = useState(false);
+    const [isVisible2, setIsVisible2] = useState(false);
 
     const [email, setEmail] = useState("");
     const [fname, setFname] = useState("");
@@ -24,44 +26,44 @@ export default function registerp() {
     const [password, setPassword] = useState("");
     const [blood_grp, setBlood_grp] = useState("");
     const [weight, setWeight] = useState("");
-
+  
     const HandleRegister = () => {
         const data = {
-            email_id: email,
-            name: fname,
-            lname: lname,
-            age: age,
-            weight: weight,
             address: address,
+            age: age,
+            blood_grp: blood_grp,
+            email_id: email,
+            lname: lname,
             mob_no: number,
+            name: fname,
+            weight: weight,
             password: password,
-            blood_grp: blood_grp
+            medical_history:"",
+            id:1
         }
         console.log(data)
-        fetch('http://127.0.0.1:8000/register_request', {
+        fetch('http://192.168.43.119:8000/register_request', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                data
-            }),
+            body: JSON.stringify(data),
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Invalid credentials');
+                    setIsVisible2(true);
                 }
                 return response.json();
             })
             .then(data => {
-                if (data == "User already exist") {
-                    //   setIsVisible(true);
-                    console.log("user already exist")
-                    return
+                if (data == "success") {
+                    navigation.navigate("Login")
                 }
-                navigation.replace("Login")
+                else if(data == "User already exist"){
+                    setIsVisible1(true);
+                }
             })
-            .catch(error => setError(error.message));
+            .catch(error => console.log(error));
     }
 
     return (
@@ -151,6 +153,8 @@ export default function registerp() {
                     <TouchableOpacity style={styles.loginBtn} onPress={HandleRegister}>
                         <Text style={styles.loginText}>Register</Text>
                     </TouchableOpacity>
+                    {isVisible1 && <Text style={{color:"red"}}>User already exists</Text>}
+                    {isVisible2 && <Text style={{color:"red"}}>Please fill all details</Text>}
                 </View>
             </ScrollView>
         </SafeAreaView>
