@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {host} from './constants'
 
 
 import {
@@ -31,7 +32,8 @@ export default function login({ navigation }) {
   };
 
   const handleLogin = () => {
-    fetch('http://192.168.43.119:8000/login_request', {
+    console.log(`http://${host}:8000/login_request`)
+    fetch(`http://${host}:8000/login_request`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import {host} from './constants'
 import {
     StyleSheet,
     Text,
@@ -42,7 +43,7 @@ export default function registerp({navigation}) {
             id:1
         }
         console.log(data)
-        fetch('http://192.168.43.119:8000/register_request', {
+        fetch(`http://${host}:8000/register_request`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

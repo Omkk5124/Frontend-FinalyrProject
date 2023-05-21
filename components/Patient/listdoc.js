@@ -1,5 +1,6 @@
 import { FlatList, Text, View, StyleSheet, Image,TouchableOpacity } from 'react-native';
 import React, { useState,useEffect } from 'react';
+import {host} from './constants'
 
 
 const listdoc = ({ navigation }) => {
@@ -12,7 +13,7 @@ const listdoc = ({ navigation }) => {
     
     const fetchData = async () => {
           try {
-          const response = await fetch('http://127.0.0.1:8000/doctor_list');
+          const response = await fetch(`http://${host}:8000/doctor_list`);
           const json = await response.json();
           setData(json);
           } catch (error) {

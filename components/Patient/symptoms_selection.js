@@ -5,6 +5,7 @@ import { symptoms } from "../../assets/symptoms";
 import Constants from 'expo-constants';
 import { Card, Searchbar } from 'react-native-paper';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {host} from './constants'
 
 
 export default function Symptoms_selection({ navigation }) {
@@ -64,7 +65,7 @@ export default function Symptoms_selection({ navigation }) {
             list += selected[i].txt + ",";
         }
         list = list.substring(0, list.length - 1)
-        fetch('http://192.168.43.119:8000/predict/', {
+        fetch(`http://${host}:8000/predict/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
